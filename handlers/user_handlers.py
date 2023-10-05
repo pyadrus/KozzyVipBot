@@ -58,7 +58,6 @@ async def back(callback_query: types.CallbackQuery, state: FSMContext):
     )
 
 
-
 def greeting_handler():
     """Регистрируем handlers для бота"""
     dp.register_message_handler(greeting)  # Обработчик команды /start, он же пост приветствия

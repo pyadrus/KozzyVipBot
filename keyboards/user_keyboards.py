@@ -25,7 +25,14 @@ def create_shops_keyboard() -> InlineKeyboardMarkup:
     shops_keyboard.row(back_button)
     return shops_keyboard
 
+def create_back_keyboard() -> InlineKeyboardMarkup:
+    """Создать клавиатуру для выбора магазина"""
+    back_keyboard = InlineKeyboardMarkup()
+    back_button = InlineKeyboardButton(text='Назад ↩️', callback_data='back')
+    back_keyboard.row(back_button)
+    return back_keyboard
 
 if __name__ == '__main__':
     create_greeting_keyboard()
     create_shops_keyboard()
+    create_back_keyboard()

@@ -1,6 +1,7 @@
 from aiogram import executor
 from loguru import logger
 
+from handlers.get_per_review_handlers import get_per_review_handler
 from handlers.shops_handlers import go_to_store_handler
 from handlers.user_handlers import greeting_handler
 from system.dispatcher import dp
@@ -13,6 +14,7 @@ def main() -> None:
     executor.start_polling(dp, skip_updates=True)
     greeting_handler()
     go_to_store_handler()
+    get_per_review_handler()
 
 
 if __name__ == '__main__':
