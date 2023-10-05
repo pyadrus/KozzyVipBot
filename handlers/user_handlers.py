@@ -40,13 +40,26 @@ async def greeting(message: types.Message, state: FSMContext):
                         parse_mode=types.ParseMode.HTML)
 
 
-
-
-
-
+@dp.callback_query_handler(lambda c: c.data == "back")
+async def back(callback_query: types.CallbackQuery, state: FSMContext):
+    """Обработчик команды back, он же пост приветствия"""
+    await state.finish()
+    await state.reset_state()
+    # Получаем текущую дату и время
+    current_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f'Запустили бота: {callback_query.from_user.id, callback_query.from_user.username, current_date}')
+    greeting_keyboard = create_greeting_keyboard()
+    # Отправляем сообщение с клавиатурой в ответ на CallbackQuery
+    await callback_query.message.edit_text(
+        text=greeting_post,
+        reply_markup=greeting_keyboard,
+        disable_web_page_preview=True,
+        parse_mode=types.ParseMode.HTML
+    )
 
 
 
 def greeting_handler():
     """Регистрируем handlers для бота"""
     dp.register_message_handler(greeting)  # Обработчик команды /start, он же пост приветствия
+    dp.register_message_handler(back)
