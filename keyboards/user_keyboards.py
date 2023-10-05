@@ -13,5 +13,19 @@ def create_greeting_keyboard() -> InlineKeyboardMarkup:
     return greeting_keyboard
 
 
+def create_shops_keyboard() -> InlineKeyboardMarkup:
+    """Создать клавиатуру для выбора магазина"""
+    shops_keyboard = InlineKeyboardMarkup()
+    children_backpacks_button = InlineKeyboardButton(text='Детские рюкзаки и сумки 🎒',
+                                                     callback_data='children_backpacks_and_bags_store')
+    men_bags_purses_button = InlineKeyboardButton(text='Мужские сумки и кошельки 👜', callback_data='men_bags_purses')
+    back_button = InlineKeyboardButton(text='Назад ↩️', callback_data='back')
+    shops_keyboard.row(children_backpacks_button)
+    shops_keyboard.row(men_bags_purses_button)
+    shops_keyboard.row(back_button)
+    return shops_keyboard
+
+
 if __name__ == '__main__':
     create_greeting_keyboard()
+    create_shops_keyboard()
