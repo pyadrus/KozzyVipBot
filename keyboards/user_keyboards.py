@@ -47,8 +47,20 @@ def create_raffle_keyboard() -> InlineKeyboardMarkup:
     return raffle_keyboard
 
 
+def create_what_contest_keyboard() -> InlineKeyboardMarkup:
+    """Создать клавиатуру для выбора магазина"""
+    what_contest_keyboard = InlineKeyboardMarkup()
+    participate_contest_button = InlineKeyboardButton(text='Участвовать в конкурсе',
+                                                      callback_data='participate_contest')
+    back_button = InlineKeyboardButton(text='Назад ↩️', callback_data='back')
+    what_contest_keyboard.row(participate_contest_button)
+    what_contest_keyboard.row(back_button)
+    return what_contest_keyboard
+
+
 if __name__ == '__main__':
     create_greeting_keyboard()
     create_shops_keyboard()
     create_back_keyboard()
     create_raffle_keyboard()
+    create_what_contest_keyboard()
