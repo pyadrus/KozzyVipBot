@@ -14,7 +14,7 @@ class SomeState(StatesGroup):
 
 @dp.callback_query_handler(lambda c: c.data == "get_per_review")
 async def get_per_review(callback_query: types.CallbackQuery, state: FSMContext):
-    """Получить 150 руб. за отзыв"""
+    """Получить 100 руб. за отзыв"""
     back_keyboard = create_back_keyboard()
     await bot.send_message(callback_query.from_user.id, get_per_review_post,
                            reply_markup=back_keyboard,
